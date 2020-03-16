@@ -6,8 +6,8 @@ $(document).ready(function() {
         $.ajax({
             url : 'https://flynn.boolean.careers/exercises/api/random/int',
             method : 'GET',
-            success : function(randomNumber) {
-                var randomNumber = randomNumber.response;
+            success : function(data) {
+                var randomNumber = data.response;
                 console.log(randomNumber);
                 test(randomNumber,self);
             } ,
@@ -21,10 +21,11 @@ $(document).ready(function() {
 
     function test(randN,selector) {
         $(selector).text(randN);
+        $(selector).removeClass('yellow green');
         if (randN <= 5) {
-            $(selector).addClass('yellow');
+            $(selector).toggleClass('yellow');
         } else {
-            $(selector).addClass('green');
+            $(selector).toggleClass('green');
         }
     }
 
